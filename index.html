@@ -1,0 +1,648 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/style.css" rel="stylesheet">
+<title>Color Number</title>
+<style type="text/css">
+    p{text-align:center;}
+    #wrap{width:90%; height:100%; background:white;margin: 0 auto;}
+    #header{width:100%; height:10%; margin-top: 2%; margin-bottom:2%; background:white; text-align: center;}
+    #middle{width:100%; float:left; background:white;}
+    #sidebar{width:40%; height:100%; float:left; margin-right:2%; background:white;}
+    #bottom{width:100%; height:50%; margin-top:1%; background:white;}
+    #content{width:50%; height:100%; float:left; background:white;}
+    #footer{width:100%; height:100px; float:left; margin-top:5px; background:white; clear: both; text-align: center; bottom: 0;font-family:"fo"}
+    .table1 {width:100%;border:1px solid;border-collapse: collapse;font-family:"fo"}
+    .table1 td{border: 1px solid;width: 10%;padding: 4%;}
+    .table2 {width: 97%;font-family:"fo"}
+    .table3 {margin-left: 20%;width:50%;font-family:"fo"}
+    .box1 {background: #3C3C8C;color: white; text-align: center;width: 130px;height: 100%;}
+    .box2 {background: #3C3C8C;color: white; text-align: center;width: 100%;height: 100%;}
+    .img1 {width: 80%;height: 50%;}
+    #button {margin: 2%; width:10%;height: 30px;color:#fff;background: #ef3340;font-size: 100%;border:none;border-radius: 20px;box-shadow: 0 2px 4px #ef3340;transition:0.3s;}
+    .font1 {color: #3C3C8C;text-align: center;font-size: 300%;font-family: "fo";}
+    .instyle {border-style: none;background: transparent;width: 10%;height: 30%;font-size: 200%;color: #3C3C8C;font-family:"fo";text-align:center;}
+    .instyle1 {border-style: none;background: transparent;width: 20%;height: 30%;font-size: 200%;color: #3C3C8C;font-family:"fo";text-align:center;}
+    .container {width: 380px;}
+    .td1 {background: #3C3C8C;color: white;}
+    .result {border-style: none;width: 100%;text-align: center;font-family:"fo";font-size:13pt;}
+    @font-face{src: url("fonts/NotoSansKR-Bold.otf");font-family:"fo";}
+</style>
+<script src="js/hangul.js"></script>
+<script type="text/javascript">
+
+function change(){
+    // 폼 객체 선택
+    var frm = document.forms['frm'];
+    
+    // 주민번호 년,월,일 분리
+    var jumin1_val = frm['jumin1'].value;
+    var jumin2_val = jumin1_val.split('-')
+    // 주민번호 년,월,일 값 변수에 저장
+    var year = jumin2_val[0];
+    var month = jumin2_val[1];
+    var day = jumin2_val[2];
+    // 년,월,일 한자리 수로 분리하기
+    var year_sp = year.split('');
+    var month_sp = month.split('');
+    var day_sp = day.split('');
+    // 분리한 년,월,일 서로 더하기
+    var month_sum = parseInt(month_sp[0]) + parseInt(month_sp[1])
+    var day_sum = parseInt(day_sp[0]) + parseInt(day_sp[1])
+    
+    var year_sum = parseInt(year_sp[0]) + parseInt(year_sp[1]) + parseInt(year_sp[2]) + parseInt(year_sp[3])
+    var year_sum2 = year_sum + month_sum + day_sum
+    var year_sum3 = year_sum2.toString();
+    var yearsp = year_sum.toString();
+    var year_sp2 = year_sum3.split('');
+    
+    var yearssp = yearsp.split('');
+    if(yearssp.length == 2){
+        var year_sum4 = parseInt(yearssp[0]) + parseInt(yearssp[1])
+    }else{
+        var year_sum4 = parseInt(yearssp[0])
+    }
+    
+    var thyear = new Date().getFullYear()
+    var thyear_sp = thyear.toString();
+    var thyear_ssp = thyear_sp.split('');
+    var thyear_sum = parseInt(thyear_ssp[0]) + parseInt(thyear_ssp[1]) + parseInt(thyear_ssp[2]) + parseInt(thyear_ssp[3])
+    var thyear_sp2 = thyear_sum.toString();
+    var thyear_ssp2 = thyear_sp2.split('');
+    
+    
+    if(thyear_sum.length == 2){
+        var thyear_sum2 = parseInt(thyear_ssp2[0]) + parseInt(thyear_ssp2[1])
+    }else{
+        var thyear_sum2 = parseInt(thyear_ssp2[0])
+    }
+    
+    var ohc = thyear_sum2 + month_sum + day_sum
+    var ohc_sp = ohc.toString();
+    var ohc_ssp = ohc_sp.split('');
+    var ohc_sum = parseInt(ohc_ssp[0]) + parseInt(ohc_ssp[1])
+    
+    //성취컬러 넘버
+    var scn1 = month_sum + day_sum
+    var scn2 = day_sum + year_sum4
+    var scn3 = scn1 + scn2
+    var scn4 = month_sum + year_sum4
+    
+    //도전컬러 넘버
+    var cnc1 = month_sum - day_sum
+    var cnc1_abs = Math.abs(cnc1)
+    var cnc2 = day_sum - year_sum4
+    var cnc2_abs = Math.abs(cnc2)
+    var cnc3 = cnc1_abs - cnc2_abs
+    var cnc3_abs = Math.abs(cnc3)
+    var cnc4 = month_sum - year_sum4
+    var cnc4_abs = Math.abs(cnc4)
+    
+    
+    
+    
+    //이름 분리
+    var pname1 = frm['pname'].value;
+    var pname2 = pname1.substr(1);
+    var pname3 = Hangul.disassemble(pname2);
+    
+    var cenname = pname1.substr(1,1);
+    var cenname1 = Hangul.disassemble(cenname);
+    
+    event.preventDefault();
+
+    //성취 컬러 넘버
+    //첫번째 (월 + 일)
+    if(scn1 == 11){
+        frm['scn1'].value = ('11(2)')
+    }else if(scn1 == 22){
+        frm['scn1'].value = ('22(4)')
+    }else if(scn1 == 10){
+        frm['scn1'].value = ('1')
+    }else if(scn1 > 9){
+        var scn11 = scn1.toString();
+        var scn111 = scn11.split('');
+        var scn1111 = parseInt(scn111[0]) + parseInt(scn111[1])
+        frm['scn1'].value = scn1111
+        if(scn1111 == 10){
+            frm['scn1'].value = ('1')
+        }
+    }else{
+        frm['scn1'].value = scn1
+    }
+    //두번째 (일 + 년)
+    if(scn2 == 11){
+        frm['scn2'].value = ('11(2)')
+    }else if(scn2 == 22){
+        frm['scn2'].value = ('22(4)')
+    }else if(scn2 == 10){
+        frm['scn2'].value = ('1')
+    }else if(scn2 > 9){
+        var scn21 = scn2.toString();
+        var scn211 = scn21.split('');
+        var scn2111 = parseInt(scn211[0]) + parseInt(scn211[1])
+        frm['scn2'].value = scn2111
+        if(scn2111 == 10){
+            frm['scn2'].value = ('1')
+        }
+    }else{
+        frm['scn2'].value = scn2
+    }
+    //세번째 (첫번째 - 두번째)
+    if(scn3 == 11){
+        frm['scn3'].value = ('11(2)')
+    }else if(scn3 == 22){
+        frm['scn3'].value = ('22(4)')
+    }else if(scn3 == 10){
+        frm['scn3'].value = ('1')
+    }else if(scn3 > 9){
+        var scn31 = scn3.toString();
+        var scn311 = scn31.split('');
+        var scn3111 = parseInt(scn311[0]) + parseInt(scn311[1])
+        frm['scn3'].value = scn3111
+        if(scn3111 == 10){
+            frm['scn3'].value = ('1')
+        }
+    }else{
+        frm['scn3'].value = scn3
+    }
+    //네번째 (월 + 년)
+    if(scn4 == 11){
+        frm['scn4'].value = ('11(2)')
+    }else if(scn4 == 22){
+        frm['scn4'].value = ('22(4)')
+    }else if(scn4 == 10){
+        frm['scn4'].value = ('1')
+    }else if(scn4 > 9){
+        var scn41 = scn4.toString();
+        var scn411 = scn41.split('');
+        var scn4111 = parseInt(scn411[0]) + parseInt(scn411[1])
+        frm['scn4'].value = scn4111
+        if(scn4111 == 10){
+            frm['scn4'].value = ('1')
+        }
+    }else{
+        frm['scn4'].value = scn4
+    }
+
+    //도전 컬러 넘버
+    //첫번째
+    if(cnc1_abs == 11){
+        frm['cnc1'].value = ('11(2)')
+    }else if(cnc1_abs == 22){
+        frm['cnc1'].value = ('22(4)')
+    }else if(cnc1_abs == 10){
+        frm['cnc1'].value = ('1')
+    }else if(cnc1_abs > 9){
+        var cnc11 = cnc1_abs.toString();
+        var cnc111 = cnc11.split('');
+        var cnc1111 = parseInt(cnc111[0]) + parseInt(cnc111[1])
+        frm['cnc1'].value = cnc1111
+        if(cnc1111 == 10){
+            frm['cnc1'].value = ('1')
+        }
+    }else{
+        frm['cnc1'].value = cnc1_abs
+    }
+    //두번째
+    if(cnc2_abs == 11){
+        frm['cnc2'].value = ('11(2)')
+    }else if(cnc2_abs == 22){
+        frm['cnc2'].value = ('22(4)')
+    }else if(cnc2_abs == 10){
+        frm['cnc2'].value = ('1')
+    }else if(cnc2_abs > 9){
+        var cnc21 = cnc2_abs.toString();
+        var cnc211 = cnc21.split('');
+        var cnc2111 = parseInt(cnc211[0]) + parseInt(cnc211[1])
+        frm['cnc2'].value = cnc2111
+        if(cnc2111 == 10){
+            frm['cnc2'].value = ('1')
+        }
+    }else{
+        frm['cnc2'].value = cnc2_abs
+    }
+    //세번째
+    if(cnc3_abs == 11){
+        frm['cnc3'].value = ('11(2)')
+    }else if(cnc3_abs == 22){
+        frm['cnc3'].value = ('22(4)')
+    }else if(cnc3_abs == 10){
+        frm['cnc3'].value = ('1')
+    }else if(cnc3_abs > 9){
+        var cnc31 = cnc3_abs.toString();
+        var cnc311 = cnc31.split('');
+        var cnc3111 = parseInt(cnc311[0]) + parseInt(cnc311[1])
+        frm['cnc3'].value = cnc3111
+        if(cnc3111 == 10){
+            frm['cnc3'].value = ('1')
+        }
+    }else{
+        frm['cnc3'].value = cnc3_abs
+    }
+    //네번째
+    if(cnc4_abs == 11){
+        frm['cnc4'].value = ('11(2)')
+    }else if(cnc4_abs == 22){
+        frm['cnc4'].value = ('22(4)')
+    }else if(cnc4_abs == 10){
+        frm['cnc4'].value = ('1')
+    }else if(cnc4_abs > 9){
+        var cnc41 = cnc4_abs.toString();
+        var cnc411 = cnc41.split('');
+        var cnc4111 = parseInt(cnc411[0]) + parseInt(cnc411[1])
+        frm['cnc4'].value = cnc4111
+        if(cnc4111 == 10){
+            frm['cnc4'].value = ('1')
+        }
+    }else{
+        frm['cnc4'].value = cnc4_abs
+    }
+    
+    
+    let ja_score = new Map([
+        ["ㄱ",1],["ㄴ",2],["ㄷ",3],["ㄹ",4],["ㅁ",5],["ㅂ",6],["ㅅ",7],["ㅇ",8],["ㅈ",9],["ㅊ",1],["ㅋ",2],["ㅌ",3],["ㅍ",4],["ㅎ",5],["ㅏ",0],["ㅑ",0],["ㅓ",0],["ㅕ",0],["ㅗ",0],["ㅛ",0],["ㅜ",0],["ㅠ",0],["ㅡ",0],["ㅣ",0],["ㅐ",0],["ㅒ",0],["ㅖ",0],["ㅔ",0]
+    ])
+    
+    let mo_score = new Map([
+        ["ㅏ",1],["ㅑ",2],["ㅓ",3],["ㅕ",4],["ㅗ",5],["ㅛ",6],["ㅜ",7],["ㅠ",8],["ㅡ",9],["ㅣ",1],["ㅐ",2],["ㅒ",3],["ㅖ",5],["ㅔ",4],["ㄱ",0],["ㄴ",0],["ㄷ",0],["ㄹ",0],["ㅁ",0],["ㅂ",0],["ㅅ",0],["ㅇ",0],["ㅈ",0],["ㅊ",0],["ㅋ",0],["ㅌ",0],["ㅍ",0],["ㅎ",0]
+    ])
+    
+    let jm_score = new Map([
+        ["ㄱ",1],["ㄴ",2],["ㄷ",3],["ㄹ",4],["ㅁ",5],["ㅂ",6],["ㅅ",7],["ㅇ",8],["ㅈ",9],["ㅊ",1],["ㅋ",2],["ㅌ",3],["ㅍ",4],["ㅎ",5],["ㅏ",1],["ㅑ",2],["ㅓ",3],["ㅕ",4],["ㅗ",5],["ㅛ",6],["ㅜ",7],["ㅠ",8],["ㅡ",9],["ㅣ",1],["ㅐ",2],["ㅒ",3],["ㅖ",5],["ㅔ",4]
+    ])
+    
+    //인생 여정 컬러 넘버
+    var iyn = parseInt(year_sp2[0]) + parseInt(year_sp2[1])
+    
+    if(iyn == 11){
+        frm['iyn'].value = ('2 & 11');
+        document.getElementById('iyi').src="colorbottle9/2.png";
+    }else if(iyn == 22){
+        frm['iyn'].value = ('4 & 22');
+        document.getElementById('iyi').src="colorbottle9/4.png";
+    }else if(iyn > 9){
+        var iyn1 = iyn.toString();
+        var iyn11 = iyn1.split('');
+        var iyn111 = parseInt(iyn11[0]) + parseInt(iyn11[1])
+        frm['iyn'].value = iyn111
+        document.getElementById('iyi').src="colorbottle9/"+iyn111+".png";
+        if(iyn111 == 10){
+            frm['iyn'].value = ('1')
+            document.getElementById('iyi').src="colorbottle9/10.png";
+        }
+    }else{
+        frm['iyn'].value = iyn;
+        document.getElementById('iyi').src="colorbottle9/"+iyn+".png";
+    }
+    
+    var iyi = frm['iyn'].value;
+    
+    var coreage1 = 36 - parseInt(iyi);
+    frm['coreage1'].value = "0~" + coreage1 + "세";
+    var coreage2 = coreage1 + 10;
+    frm['coreage2'].value = (coreage1 + 1) + "~" + coreage2 + "세";
+    var coreage3 = coreage2 + 10;
+    frm['coreage3'].value = (coreage2 + 1) + "~" + coreage3 + "세";
+    var coreage4 = coreage3 + 10;
+    frm['coreage4'].value = (coreage3 + 1) + "세~";
+    
+    //소울 컬러 넘버 = 모음 합산
+    //페르소나 컬러 넘버 = 자음 합산
+    
+    if(pname3.length == 7){
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]) + mo_score.get(pname3[2]) + mo_score.get(pname3[3]) + mo_score.get(pname3[4]) + mo_score.get(pname3[5]) + mo_score.get(pname3[6]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]) + ja_score.get(pname3[2]) + ja_score.get(pname3[3]) + ja_score.get(pname3[4]) + ja_score.get(pname3[5]) + ja_score.get(pname3[6]);
+    }else if(pname3.length == 6){
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]) + mo_score.get(pname3[2]) + mo_score.get(pname3[3]) + mo_score.get(pname3[4]) + mo_score.get(pname3[5]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]) + ja_score.get(pname3[2]) + ja_score.get(pname3[3]) + ja_score.get(pname3[4]) + ja_score.get(pname3[5]);
+    }else if(pname3.length == 5){
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]) + mo_score.get(pname3[2]) + mo_score.get(pname3[3]) + mo_score.get(pname3[4]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]) + ja_score.get(pname3[2]) + ja_score.get(pname3[3]) + ja_score.get(pname3[4]);
+    }else if(pname3.length == 4){
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]) + mo_score.get(pname3[2]) + mo_score.get(pname3[3]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]) + ja_score.get(pname3[2]) + ja_score.get(pname3[3]);
+    }else if(pname3.length == 3){
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]) + mo_score.get(pname3[2]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]) + ja_score.get(pname3[2]);
+    }else{
+        var scnn = mo_score.get(pname3[0]) + mo_score.get(pname3[1]);
+        var prsn = ja_score.get(pname3[0]) + ja_score.get(pname3[1]);
+    }
+    
+    if(cenname1.length == 4){
+        var grwn = jm_score.get(cenname1[0]) + jm_score.get(cenname1[1]) + jm_score.get(cenname1[2]) + jm_score.get(cenname1[3]);
+    }else if(cenname1.length == 3){
+        var grwn = jm_score.get(cenname1[0]) + jm_score.get(cenname1[1]) + jm_score.get(cenname1[2]);
+    }else{
+        var grwn = jm_score.get(cenname1[0]) + jm_score.get(cenname1[1]);
+    }
+    
+    if(grwn == 11){
+        frm['grw'].value = ('2 & 11')
+        document.getElementById('grwi').src="colorbottle9/2.png";
+    }else if(grwn == 22){
+        frm['grw'].value = ('4 & 22')
+        document.getElementById('grwi').src="colorbottle9/4.png";
+    }else if(grwn > 9){
+        var grwn1 = grwn.toString();
+        var grwn11 = grwn1.split('');
+        var grwn111 = parseInt(grwn11[0]) + parseInt(grwn11[1])
+        frm['grw'].value = grwn111
+        document.getElementById('grwi').src="colorbottle9/"+grwn111+".png";
+        if(grwn111 == 10){
+            frm['grw'].value = ('1')
+            document.getElementById('grwi').src="colorbottle9/1.png";
+        }
+    }else{
+        frm['grw'].value = grwn
+        document.getElementById('grwi').src="colorbottle9/"+grwn+".png";
+    }
+    //소울 컬러 넘버
+
+    if(scnn == 11){
+        frm['scnn'].value = ('2 & 11')
+        document.getElementById('soi').src="colorbottle9/2.png";
+    }else if(scnn == 22){
+        frm['scnn'].value = ('4 & 22')
+        document.getElementById('soi').src="colorbottle9/4.png";
+    }else if(scnn > 9){
+        var scnn1 = scnn.toString();
+        var scnn11 = scnn1.split('');
+        var scnn111 = parseInt(scnn11[0]) + parseInt(scnn11[1])
+        frm['scnn'].value = scnn111
+        document.getElementById('soi').src="colorbottle9/"+scnn111+".png";
+        if(scnn111 == 10){
+            frm['scnn'].value = ('1')
+            document.getElementById('soi').src="colorbottle9/1.png";
+        }
+    }else{
+        frm['scnn'].value = scnn
+        document.getElementById('soi').src="colorbottle9/"+scnn+".png";
+    }
+    
+    //페르소나 컬러 넘버
+    
+    
+    if(prsn == 11){
+        frm['prsn'].value = ('2 & 11')
+        document.getElementById('pri').src="colorbottle9/2.png";
+    }else if(prsn == 22){
+        frm['prsn'].value = ('4 & 22')
+        document.getElementById('pri').src="colorbottle9/4.png";
+    }else if(prsn > 9){
+        var prsn1 = prsn.toString();
+        var prsn11 = prsn1.split('');
+        var prsn111 = parseInt(prsn11[0]) + parseInt(prsn11[1])
+        frm['prsn'].value = prsn111
+        document.getElementById('pri').src="colorbottle9/"+prsn111+".png";
+        if(prsn111 == 10){
+            frm['prsn'].value = ('1')
+            document.getElementById('pri').src="colorbottle9/1.png";
+        }
+        if(prsn111 == 11){
+            frm['prsn'].value = ('2 & 11')
+            document.getElementById('pri').src="colorbottle9/2.png";
+        }
+    }else{
+        frm['prsn'].value = prsn
+        document.getElementById('pri').src="colorbottle9/"+prsn+".png";
+    }
+    
+    //운명 컬러 넘버 = 소울 + 페르소나
+    var dstn = scnn + prsn
+    
+    if(dstn == 11){
+        frm['dstn'].value = ('2 & 11')
+        document.getElementById('dti').src="colorbottle9/2.png";
+    }else if(dstn == 22){
+        frm['dstn'].value = ('4 & 22')
+        document.getElementById('dti').src="colorbottle9/4.png";
+    }else if(dstn > 9){
+        var dstn1 = dstn.toString();
+        var dstn11 = dstn1.split('');
+        var dstn111 = parseInt(dstn11[0]) + parseInt(dstn11[1])
+        frm['dstn'].value = dstn111
+        document.getElementById('dti').src="colorbottle9/"+dstn111+".png";
+        if(dstn111 == 10){
+            frm['dstn'].value = ('1')
+            document.getElementById('dti').src="colorbottle9/1.png";
+        }
+        if(dstn111 == 11){
+            frm['dstn'].value = ('2 & 11')
+            document.getElementById('dti').src="colorbottle9/2.png";
+        }
+    }else{
+        frm['dstn'].value = dstn
+        document.getElementById('dti').src="colorbottle9/"+dstn+".png";
+    }
+    
+    
+    //완성 컬러 넘버 = 인생 여정 컬러 + 운명 컬러
+    var ccn = iyn + dstn
+    
+    if(ccn == 11){
+        frm['ccn'].value = ('2 & 11')
+        document.getElementById('cpi').src="colorbottle9/2.png";
+    }else if(ccn == 22){
+        frm['ccn'].value = ('4 & 22')
+        document.getElementById('cpi').src="colorbottle9/4.png";
+    }else if(ccn > 9){
+        var ccn1 = ccn.toString();
+        var ccn11 = ccn1.split('');
+        var ccn111 = parseInt(ccn11[0]) + parseInt(ccn11[1])
+        frm['ccn'].value = ccn111
+        document.getElementById('cpi').src="colorbottle9/"+ccn111+".png";
+        if(ccn111 == 10){
+            frm['ccn'].value = ('1')
+            document.getElementById('cpi').src="colorbottle9/1.png";
+        }
+        if(ccn111 == 11){
+            frm['ccn'].value = ('2 & 11')
+            document.getElementById('cpi').src="colorbottle9/2.png";
+        }
+    }else{
+        frm['ccn'].value = ccn
+        document.getElementById('cpi').src="colorbottle9/"+ccn+".png";
+    }
+    
+    //생일 컬러 넘버
+    var brn = day_sum + '&' + parseInt(day)
+    
+    if(day_sum == 11){
+        frm['brn'].value = ('2 & 11')
+        document.getElementById('bti').src="colorbottle9/2.png";
+    }else if(day_sum == 22){
+        frm['brn'].value = ('4 & 22')
+        document.getElementById('bti').src="colorbottle9/4.png";
+    }else if(day_sum > 9){
+        var day_sum1 = day_sum.toString();
+        var day_sum11 = day_sum1.split('');
+        var day_sum111 = parseInt(day_sum11[0]) + parseInt(day_sum11[1])
+        frm['brn'].value = day_sum111
+        document.getElementById('bti').src="colorbottle9/"+day_sum111+".png";
+        if(day_sum111 == 10){
+            frm['brn'].value = ('1')
+            document.getElementById('bti').src="colorbottle9/1.png";
+        }
+        if(day_sum111 == 11){
+            frm['brn'].value = ('2 & 11')
+            document.getElementById('bti').src="colorbottle9/2.png";
+        }
+    }else{
+        frm['brn'].value = day_sum
+        document.getElementById('bti').src="colorbottle9/"+day_sum+".png";
+    }
+    
+    //올해의 컬러 넘버
+    
+    if(ohc_sum == 11){
+        frm['thyearb'].value = ('2 & 11')
+        document.getElementById('thi').src="colorbottle9/2.png";
+    }else if(ohc_sum == 22){
+        frm['thyearb'].value = ('4 & 22')
+        document.getElementById('thi').src="colorbottle9/4.png";
+    }else if(ohc_sum > 9){
+        var ohc_sum1 = ohc_sum.toString();
+        var ohc_sum11 = ohc_sum1.split('');
+        var ohc_sum111 = parseInt(ohc_sum11[0]) + parseInt(ohc_sum11[1])
+        frm['thyearb'].value = ohc_sum111
+        document.getElementById('thi').src="colorbottle9/"+ohc_sum111+".png";
+        if(ohc_sum111 == 10){
+            frm['thyearb'].value = ('1')
+            document.getElementById('thi').src="colorbottle9/1.png";
+        }
+        if(ohc_sum111 == 11){
+            frm['thyearb'].value = ('2 & 11')
+            document.getElementById('thi').src="colorbottle9/2.png";
+        }
+    }else{
+        frm['thyearb'].value = ohc_sum
+        document.getElementById('thi').src="colorbottle9/"+ohc_sum+".png";
+    }
+        
+    
+}
+    
+</script>
+</head>
+<body>
+<form name="frm">
+<div id="wrap">
+   <div id="header">
+    <span class="font1">Who are you?( </span>
+    <input type="text" class="instyle" name="pname" value="홍길동"/>
+    <span class="font1"> : </span>
+    <input type="text" class="instyle1" name="jumin1" value="1997-07-09"/>
+    <span class="font1"> )</span>
+    <span><button id="button" onclick="change();changeImg();">Core Color</button></span>
+   </div>
+   <div id="middle">
+       <div id="sidebar">
+          <table class="table3">
+            <tr>
+               <td>
+                    <h1 class="box2">올해의 컬러</h1>
+                    <input class="result" type="text" name="thyearb" size="2" />
+                    <p> 
+                    <img id="thi" class="img1" src="colorbottle9/0.png">
+                    </p>
+                </td>
+            </tr>
+          </table>
+       </div>
+       <div id="content">
+           <table class="table1">
+            <tr><!-- 첫째줄 -->
+                <td class="td1">첫 번째</td>
+                <td><input class="result" type="text" name="coreage1" size="2" /></td>
+                <td><input class="result" type="text" name="scn1" size="2" /></td>
+                <td><input class="result" type="text" name="cnc1" size="2" /></td>
+            </tr>
+            <tr><!-- 둘째줄 -->
+                <td class="td1">두 번째</td>
+                <td><input class="result" type="text" name="coreage2" size="2" /></td>
+                <td><input class="result" type="text" name="scn2" size="2" /></td>
+                <td><input class="result" type="text" name="cnc2" size="2" /></td>
+            </tr>
+            <tr><!-- 세째줄 -->
+                <td class="td1">세 번째</td>
+                <td><input class="result" type="text" name="coreage3" size="2" /></td>
+                <td><input class="result" type="text" name="scn3" size="2" /></td>
+                <td><input class="result" type="text" name="cnc3" size="2" /></td>
+            </tr>
+            <tr><!-- 네째줄 -->
+                <td class="td1">네 번째</td>
+                <td><input class="result" type="text" name="coreage4" size="2" /></td>
+                <td><input class="result" type="text" name="scn4" size="2" /> </td>
+                <td><input class="result" type="text" name="cnc4" size="2" />  </td>
+            </tr>
+        </table>         
+       </div>
+       
+   </div>
+   <div id="bottom">
+       <table class="table2">
+            <tr>
+                <td>
+                <h1 class="box1">인생여정</h1>
+                <input class="result" type="text" name="iyn" size="2" />
+                <p> 
+                <img id="iyi" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+                <td>
+                <h1 class="box1">성장코어</h1>
+                <input class="result" type="text" name="grw" size="2" />
+                <p>
+                <img id="grwi" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+                <td>
+                <h1 class="box1">운명</h1>
+                <input class="result" type="text" name="dstn" size="2" />
+                <p>
+                <img id="dti" class="img1" src="colorbottle9/0.png">
+                </p> 
+                </td>
+                <td>
+                <h1 class="box1">소울</h1>
+                <input class="result" type="text" name="scnn" size="2" />
+                <p>
+                <img id="soi" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+                <td>
+                <h1 class="box1">페르소나</h1>
+                <input class="result" type="text" name="prsn" size="2" />
+                <p>
+                <img id="pri" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+                <td>
+                <h1 class="box1">완성</h1>
+                <input class="result" type="text" name="ccn" size="2" />
+                <p>
+                <img id="cpi" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+                <td>
+                <h1 class="box1">생일</h1>
+                <input class="result" type="text" name="brn" size="2" />
+                <p>
+                <img id="bti" class="img1" src="colorbottle9/0.png">
+                </p>
+                </td>
+            </tr>
+        </table>
+   </div>
+   <div id="footer">
+    <p>Copyright © 2019 HEILENDE BAUM CO.LTD All rights resrtved.</p>
+    <p>상시 저작권에 대한 사항은 (주) 하이렌더 바움에 있으며 사전 승인 없이 무단전재 및 재배포 경우,관령 법령에 의거 재재를 받을 수 있습니다.</p>
+   </div>
+</div>
+</form>
+</body>
+</html>
