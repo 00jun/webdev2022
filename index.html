@@ -423,7 +423,7 @@ function change(){
     }else if(dstn > 9){
         var dstn1 = dstn.toString();
         var dstn11 = dstn1.split('');
-        var dstn111 = parseInt(dstn11[0]) + parseInt(dstn11[1])
+        var dstn111 = parseInt(dstn11[0]) + parseInt(dstn11[1]);
         frm['dstn'].value = dstn111
         document.getElementById('dti').src="colorbottle9/"+dstn111+".png";
         if(dstn111 == 10){
@@ -623,7 +623,7 @@ function change(){
                 </td>
                 <td>
                 <h1 class="box1">완성</h1>
-                <input class="result" type="text" name="ccn" size="2" />
+                <input class="result" type="hidden" name="ccn" size="2" />
                 <p>
                 <img id="cpi" class="img1" src="colorbottle9/0.png">
                 </p>
