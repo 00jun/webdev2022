@@ -80,9 +80,13 @@ function change(){
     }
     
     var ohc = thyear_sum2 + month_sum + day_sum
-    var ohc_sp = ohc.toString();
-    var ohc_ssp = ohc_sp.split('');
-    var ohc_sum = parseInt(ohc_ssp[0]) + parseInt(ohc_ssp[1])
+    if(ohc.length == 2){
+        var ohc_sp = ohc.toString();
+        var ohc_ssp = ohc_sp.split('');
+        var ohc_sum = parseInt(ohc_ssp[0]) + parseInt(ohc_ssp[1])
+    }else{
+        var ohc_sum = ohc;
+    }
     
     //성취컬러 넘버
     var scn1 = month_sum + day_sum
@@ -411,7 +415,7 @@ function change(){
         document.getElementById('pri').src="colorbottle9/"+prsn+".png";
     }
     
-    //운명 컬러 넘버 = 소울 + 페르소나
+    //운명 컬러 넘버
     var dstn = scnn + prsn
     
     if(dstn == 11){
@@ -434,6 +438,14 @@ function change(){
             frm['dstn'].value = ('2 & 11')
             document.getElementById('dti').src="colorbottle9/2.png";
         }
+        else if(dstn111 > 11){
+            var dstn111 = dstn111.toString();
+            var dstn111 = dstn111.split('');
+            var dstn111 = parseInt(dstn111[0]) + parseInt(dstn111[1])
+            frm['dstn'].value = dstn111
+            document.getElementById('dti').src="colorbottle9/"+dstn111+".png";
+        }
+        var dstn = dstn111;
     }else{
         frm['dstn'].value = dstn
         document.getElementById('dti').src="colorbottle9/"+dstn+".png";
@@ -444,6 +456,9 @@ function change(){
     var ccn = iyn + dstn
     
     if(ccn == 11){
+        frm['ccn'].value = ('2 & 11')
+        document.getElementById('cpi').src="colorbottle9/2.png";
+    }if(ccn == 11){
         frm['ccn'].value = ('2 & 11')
         document.getElementById('cpi').src="colorbottle9/2.png";
     }else if(ccn == 22){
