@@ -434,6 +434,12 @@ function change(){
             frm['dstn'].value = ('2 & 11')
             document.getElementById('dti').src="colorbottle9/2.png";
         }
+        if(dstn111 > 9){
+            var dstn111 = dstn111.toString();
+            var dstn111 = dstn111.split('');
+            var dstn111 = parseInt(dstn111[0]) + parseInt(dstn111[1]);
+            frm['dstn'].value = dstn111
+            document.getElementById('dti').src="colorbottle9/"+dstn111+".png";
     }else{
         frm['dstn'].value = dstn
         document.getElementById('dti').src="colorbottle9/"+dstn+".png";
