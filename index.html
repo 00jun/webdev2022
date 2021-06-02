@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/style.css" rel="stylesheet">
 <title>Color Number</title>
 <style type="text/css">
@@ -85,9 +84,8 @@ function change(){
         var ohc_ssp = ohc_sp.split('');
         var ohc_sum = parseInt(ohc_ssp[0]) + parseInt(ohc_ssp[1])
     }else{
-        var ohc_sum = ohc;
+        var ohc_sum = ohc
     }
-    
     //성취컬러 넘버
     var scn1 = month_sum + day_sum
     var scn2 = day_sum + year_sum4
@@ -415,7 +413,7 @@ function change(){
         document.getElementById('pri').src="colorbottle9/"+prsn+".png";
     }
     
-    //운명 컬러 넘버
+    //운명 컬러 넘버 = 소울 + 페르소나
     var dstn = scnn + prsn
     
     if(dstn == 11){
@@ -438,14 +436,14 @@ function change(){
             frm['dstn'].value = ('2 & 11')
             document.getElementById('dti').src="colorbottle9/2.png";
         }
-        else if(dstn111 > 11){
+        if(dstn111 > 9){
             var dstn111 = dstn111.toString();
             var dstn111 = dstn111.split('');
             var dstn111 = parseInt(dstn111[0]) + parseInt(dstn111[1])
             frm['dstn'].value = dstn111
             document.getElementById('dti').src="colorbottle9/"+dstn111+".png";
         }
-        var dstn = dstn111;
+        var dstn = dstn111
     }else{
         frm['dstn'].value = dstn
         document.getElementById('dti').src="colorbottle9/"+dstn+".png";
@@ -456,9 +454,6 @@ function change(){
     var ccn = iyn + dstn
     
     if(ccn == 11){
-        frm['ccn'].value = ('2 & 11')
-        document.getElementById('cpi').src="colorbottle9/2.png";
-    }if(ccn == 11){
         frm['ccn'].value = ('2 & 11')
         document.getElementById('cpi').src="colorbottle9/2.png";
     }else if(ccn == 22){
@@ -552,14 +547,14 @@ function change(){
     <span class="font1"> : </span>
     <input type="text" class="instyle1" name="jumin1" value="1997-07-09"/>
     <span class="font1"> )</span>
-    <span><button id="button" onclick="change();changeImg();">Core</button></span>
+    <span><button id="button" onclick="change();changeImg();">CORE</button></span>
    </div>
    <div id="middle">
        <div id="sidebar">
           <table class="table3">
             <tr>
                <td>
-                    <h1 class="box2">올해의 컬러</h1>
+                    <h1 class="box1">올해의 컬러</h1>
                     <input class="result" type="hidden" name="thyearb" size="2" />
                     <p> 
                     <img id="thi" class="img1" src="colorbottle9/0.png">
