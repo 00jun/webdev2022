@@ -278,7 +278,11 @@ function change(){
     ])
     
     //인생 여정 컬러 넘버
-    var iyn = parseInt(year_sp2[0]) + parseInt(year_sp2[1])
+    if (year_sp2.length == 2){
+        var iyn = parseInt(year_sp2[0]) + parseInt(year_sp2[1])
+    }else{
+        var iyn = parseInt(year_sp2[0])
+    }
     
     if(iyn == 11){
         frm['iyn'].value = ('2 & 11');
