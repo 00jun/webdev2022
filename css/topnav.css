@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+}
+
+.nav-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  padding: 15px;
+}
+
+.nav-item a {
+  text-align: center;
+  text-decoration: none;
+}
